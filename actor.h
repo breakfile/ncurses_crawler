@@ -7,5 +7,5 @@ typedef struct actor {
 	int x, y, r; // position, render?
 	char represent; // what will be drawn
 	int collide; // collide with player?
-	void (*update)(); // called every frame
+	void (*update)(struct actor*); // called every frame
 } ACTOR;
