@@ -13,7 +13,7 @@ static inline int wscheck() {
 	if (col < MAX_COLS)
 		state_bad = 1;
 	if (state_bad) {
-		printw("Not a big enough screen resolution.\nEnsure 40 cols x 30 rows are avaliable.\n");
+		printw("Not a big enough screen resolution.\nEnsure %d cols x %d rows are avaliable.\n", MAX_COLS, MAX_ROWS);
 		getch();
 	}
 	return state_bad;
