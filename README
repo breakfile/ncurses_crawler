@@ -1,6 +1,6 @@
-###################
-# ncurses_crawler #
-###################
+############
+# ncrawler #
+############
 
 Dungeon crawler written in C + ncurses
 Requires Unix environment for compilations (unistd.h and ncurses.h used, feel free to port to Windows somehow.)
