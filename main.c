@@ -1,5 +1,5 @@
 #include <ncurses.h>
-#include <window.h>
+#include "window.h"
 #include <unistd.h>
 
 #define FRAME_WAIT 100000 // 10fps
@@ -10,7 +10,8 @@ int main() {
 	noecho();
 	curs_set(FALSE);
 	keypad(stdscr, TRUE);
-	wscheck(); // initial window check
+	if (wscheck()) // initial window check
+		goto cleanup;
 	
 	timeout(0); // getch doesn't block input
 	int ch; // last keypress, default to ERR
@@ -26,6 +27,8 @@ int main() {
 
 		usleep(FRAME_WAIT);
 	}
+
+cleanup:
 
 	endwin();
 	return 0;
