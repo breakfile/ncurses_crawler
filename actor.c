@@ -24,6 +24,14 @@ ACTOR *add_actor(ACTOR actor) { // add to scene_actors
 	return &scene_actors[nactors-1];
 }
 
-int get_n_actors() { // so that nactors is read only
-	return nactors;
+void clear_actors() {
+	nactors = 0;
+}
+
+void update_actors(int ch) {
+	for (int i = 0; i < nactors; i++) {
+		if (scene_actors[0].update) {
+			scene_actors[0].update(&scene_actors[0], ch);
+		}
+	}
 }

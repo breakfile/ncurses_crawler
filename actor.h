@@ -12,4 +12,5 @@ typedef struct actor {
 
 ACTOR create_actor();
 ACTOR *add_actor(ACTOR actor);
-int get_n_actors();
+void clear_actors();
+void update_actors(int ch);

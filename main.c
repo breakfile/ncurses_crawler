@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include "window.h"
 #include <unistd.h>
+#include "actor.h"
 
 #define FRAME_WAIT 100000 // 10fps
 
@@ -18,14 +19,16 @@ int main() {
 	int running = 1;
 
 	while (running) {
-		ch = getch(); // wont block
+		ch = getch(); // get input, wont block
 		if (ch == 'q')
-			running = 0;
+			running = 0; // quit if key is q
+
+		update_actors(ch);
 		
 		erase(); // clear screen, begin drawing
 		refresh(); // put screen changes, end drawing
 
-		usleep(FRAME_WAIT);
+		usleep(FRAME_WAIT); // wait until next frame
 	}
 
 cleanup:
