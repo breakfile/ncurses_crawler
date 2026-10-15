@@ -34,8 +34,7 @@ int main() {
 		usleep(FRAME_WAIT); // wait until next frame
 	}
 
-cleanup:
-
-	endwin();
-	return 0;
+	cleanup:
+		endwin();
+		return 0;
 }
