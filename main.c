@@ -13,7 +13,7 @@ int main() {
 	keypad(stdscr, TRUE);
 	if (wscheck()) // initial window check
 		goto cleanup;
-	
+
 	timeout(0); // getch doesn't block input
 	int ch; // last keypress, default to ERR
 	int running = 1;
@@ -26,6 +26,9 @@ int main() {
 		update_actors(ch);
 		
 		erase(); // clear screen, begin drawing
+
+		draw_actors();
+
 		refresh(); // put screen changes, end drawing
 
 		usleep(FRAME_WAIT); // wait until next frame

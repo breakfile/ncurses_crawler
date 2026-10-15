@@ -14,3 +14,4 @@ ACTOR create_actor();
 ACTOR *add_actor(ACTOR actor);
 void clear_actors();
 void update_actors(int ch);
+void draw_actors();

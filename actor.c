@@ -1,8 +1,9 @@
 #include "actor.h"
 #include <stddef.h>
+#include <ncurses.h>
 
-ACTOR scene_actors[128];
-int nactors = 0; // number of actors
+static ACTOR scene_actors[128];
+static int nactors = 0; // number of actors
 
 ACTOR create_actor() { // default values
 	static int instance = -1;
@@ -33,5 +34,13 @@ void update_actors(int ch) {
 		if (scene_actors[0].update) {
 			scene_actors[0].update(&scene_actors[0], ch);
 		}
+	}
+}
+
+void draw_actors() {
+	for (int i = 0; i < nactors; i++) {
+		ACTOR *sa = &scene_actors[i];
+		if (!sa || !sa->r) return;
+		mvaddch(sa->y, sa->x, sa->represent);
 	}
 }
