@@ -11,6 +11,7 @@ int main() {
 	noecho();
 	curs_set(FALSE);
 	keypad(stdscr, TRUE);
+
 	if (wscheck()) // initial window check
 		goto cleanup;
 

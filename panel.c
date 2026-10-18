@@ -1,4 +1,5 @@
 #include "panel.h"
+#include <ncurses.h>
 
 static PANEL stack[16];
 static int stack_size = 0;
@@ -18,4 +19,10 @@ void mpop() {
 
 void mclear() {
 	stack_size = 0;
+}
+
+void mdraw() {
+	for (int i = 0; i < stack_size; i++) {
+		// draw logic
+	}
 }
