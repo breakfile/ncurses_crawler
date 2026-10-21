@@ -1,7 +1,9 @@
+#include <stddef.h>
 #include <ncurses.h>
 #include "window.h"
 #include <unistd.h>
 #include "actor.h"
+#include "panel.h"
 
 #define FRAME_WAIT 100000 // 10fps
 
@@ -30,7 +32,10 @@ int main() {
 
 		draw_actors();
 
-		refresh(); // put screen changes, end drawing
+		wnoutrefresh(stdscr); // queue bg
+		mdraw(); // draw panels on top of bg
+
+		doupdate(); // push all queued
 
 		usleep(FRAME_WAIT); // wait until next frame
 	}
