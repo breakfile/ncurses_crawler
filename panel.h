@@ -13,5 +13,5 @@ typedef struct panel {
 PANEL *mpush(PANEL panel);
 void mpop();
 void mclear();
-
+void mupdate(int ch);
 void mdraw();

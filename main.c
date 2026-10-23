@@ -17,6 +17,15 @@ int main() {
 	if (wscheck()) // initial window check
 		goto cleanup;
 
+	mpush((PANEL){
+		"Panel test",
+		0, 0, 10, 10, 0,
+		{},
+		{},
+		NULL,
+		NULL
+	});
+
 	timeout(0); // getch doesn't block input
 	int ch; // last keypress, default to ERR
 	int running = 1;
@@ -27,6 +36,7 @@ int main() {
 			running = 0; // quit if key is q
 
 		update_actors(ch);
+		mupdate(ch);
 		
 		erase(); // clear screen, begin drawing
 

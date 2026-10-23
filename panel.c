@@ -30,13 +30,23 @@ void mclear() {
 }
 
 
-void mdraw(void) {
+void mdraw() {
 	for (int i = 0; i < stack_size; i++) {
 		PANEL *p = &stack[i];
 		werase(p->_window); // black background
 		box(p->_window, 0, 0);
 		if (p->title)
 			mvwprintw(p->_window, 0, 2, " %s ", p->title);
+		mvwprintw(p->_window, 1, 1, "%d", p->sel);
 		wnoutrefresh(p->_window); // queue refresh
 	}
+}
+
+void mupdate(int ch) {
+	if (!stack_size) return;
+	PANEL *p = &stack[stack_size-1];
+	if (ch == KEY_UP)
+		p->sel--;
+	if (ch == KEY_DOWN)
+		p->sel++;
 }
