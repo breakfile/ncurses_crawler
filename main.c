@@ -18,7 +18,7 @@ int main() {
 		goto cleanup;
 
 	mpush((PANEL){
-		"Panel test",
+		"Panel",
 		0, 0, 10, 10, 0,
 		{},
 		{},
